@@ -195,8 +195,6 @@ for ind in df_DAO_final.index:
     G.add_edge(source, target,style='dashed')
     #print(df_DAO_final['TRANSMITTER_ID'][ind], df_DAO_final['RECEIVER_ID'][ind])
 
-plt.figure('RPL DoDAG Visualization')
-
 #print(node_x)
 #print(node_y)
 
@@ -208,8 +206,10 @@ for i in range(len(labels)):
 #print(color_map)
 
 #Draw DiGraph of RPL DoDAG
-nx.draw_networkx(G, pos, node_color=color_map,font_size=8,style='dashed')
-
+fig,ax = plt.subplots()
+plt.gcf().canvas.manager.set_window_title("RPL DoDAG Visualization")
+nx.draw_networkx(G, pos, node_color=color_map, font_size=8, style='dashed')
+ax.invert_yaxis()
 plt.tight_layout()
 plt.axis('off')
 plt.show()
